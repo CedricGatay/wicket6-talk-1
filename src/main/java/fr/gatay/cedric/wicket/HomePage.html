@@ -1,0 +1,23 @@
+<wicket:extend>
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+            RequestScoped :
+            <wicket:container wicket:id="request">1.5-SNAPSHOT</wicket:container>
+            </div>
+            <div class="span3">
+            SessionScoped :
+            <wicket:container wicket:id="session">1.5-SNAPSHOT</wicket:container>
+            </div>
+            <div class="span3">
+            ApplicationScoped :
+            <wicket:container wicket:id="application">1.5-SNAPSHOT</wicket:container>
+            </div>
+            <div class="span3">
+            Session :
+            <wicket:container wicket:id="sessionId">1.5-SNAPSHOT</wicket:container>
+            </div>
+            Link : <a wicket:id="link">Click me</a>
+        </div>
+    </div>
+</wicket:extend>
