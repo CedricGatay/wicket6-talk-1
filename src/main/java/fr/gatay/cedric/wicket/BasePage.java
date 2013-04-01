@@ -21,6 +21,7 @@ import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarComponents;
 import de.agilecoders.wicket.markup.html.bootstrap.navbar.NavbarDropDownButton;
 import de.agilecoders.wicket.settings.IBootstrapSettings;
 import de.agilecoders.wicket.settings.ITheme;
+import fr.gatay.cedric.wicket.scala.page.SScalaPage;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -84,7 +85,9 @@ abstract class BasePage<T> extends GenericWebPage<T> {
 
         navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
                                                         new NavbarButton<HomePage>(HomePage.class, Model.of("HomePage")).setIconType(IconType.home),
-                                                        new NavbarButton<HomePage2>(HomePage2.class, Model.of("HomePage2")).setIconType(IconType.wrench))
+                                                        new NavbarButton<HomePage2>(HomePage2.class, Model.of("HomePage2")).setIconType(IconType.wrench),
+                                                        new NavbarButton<ScalaPage>(ScalaPage.class, Model.of("ScalaPage")).setIconType(IconType.bancircle),
+                                                        new NavbarButton<ScalaPage>(SScalaPage.class, Model.of("FullScalaPage")).setIconType(IconType.bancircle))
         );
 
         DropDownButton dropdown = new NavbarDropDownButton(Model.of("Themes")) {

@@ -4,7 +4,6 @@ import fr.gatay.cedric.wicket.jpa.entities.Toto;
 import fr.gatay.cedric.wicket.service.ApplicationNumberService;
 import fr.gatay.cedric.wicket.service.RequestNumberService;
 import fr.gatay.cedric.wicket.service.SessionNumberService;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.protocol.http.WebSession;
@@ -15,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-public class HomePage extends BasePage {
+public class HomePage<T> extends BasePage<T> {
     private static final Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
 
     @Inject
