@@ -29,12 +29,13 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.caching.FilenameWithVersionResourceCachingStrategy;
 import org.apache.wicket.request.resource.caching.version.MessageDigestResourceVersion;
 import org.apache.wicket.serialize.java.DeflatedJavaSerializer;
-import org.jboss.weld.environment.servlet.Listener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 import javax.enterprise.inject.spi.BeanManager;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import java.net.URI;
 
 /**
@@ -80,10 +81,16 @@ public class WicketApplication extends WebApplication {
         optimizeForWebPerformance();
 
         new AnnotatedMountScanner().scanPackage("fr.gatay.cedric.wicket").mount(this);
-        BeanManager manager = (BeanManager) getServletContext().getAttribute(
-                Listener.BEAN_MANAGER_ATTRIBUTE_NAME);
+        //        BeanManager manager = (BeanManager) getServletContext().getAttribute(
+        //                Listener.BEAN_MANAGER_ATTRIBUTE_NAME);
+        try {
+            BeanManager manager;
+            manager = (BeanManager)new InitialContext().lookup("java:comp/BeanManager");
+            new CdiConfiguration(manager).configure(this);
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
 
-        new CdiConfiguration(manager).configure(this);
     }
 
 

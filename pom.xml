@@ -5,6 +5,7 @@
 	<artifactId>wicket6-talk</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>Wicket 6 talk</name>
+    <packaging>war</packaging>
 	<description>Quick Start application demonstrating deployment of a Wicket application to Heroku.</description>
 	<licenses>
 		<license>
@@ -53,30 +54,25 @@
             <version>9.1-901.jdbc4</version>
         </dependency>
 
-		<dependency>
-			<groupId>org.jboss.weld</groupId>
-			<artifactId>weld-core</artifactId>
-			<version>1.1.10.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.weld.servlet</groupId>
-			<artifactId>weld-servlet-core</artifactId>
-			<version>1.1.10.Final</version>
+		<!--<dependency>-->
+			<!--<groupId>org.jboss.weld</groupId>-->
+			<!--<artifactId>weld-core</artifactId>-->
+			<!--<version>1.1.10.Final</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.jboss.weld.servlet</groupId>-->
+			<!--<artifactId>weld-servlet-core</artifactId>-->
+			<!--<version>1.1.10.Final</version>-->
+		<!--</dependency>-->
+        <dependency>
+			<groupId>org.jboss.seam.conversation</groupId>
+			<artifactId>seam-conversation-spi</artifactId>
+			<version>3.0.0.Final</version>
 		</dependency>
         <dependency>
 			<groupId>org.jboss.seam.conversation</groupId>
 			<artifactId>seam-conversation-weld</artifactId>
 			<version>3.0.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>javax.el-api</artifactId>
-			<version>2.2.1</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>2.2.1</version>
 		</dependency>
 
         <!-- Wicket stuffs -->
@@ -124,7 +120,7 @@
 			<artifactId>jetty-all-server</artifactId>
 			<version>${jetty.version}</version>
             <!--  needs to be compile time as we bring our own embedded Jetty -->
-            <scope>compile</scope>
+            <scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -242,30 +238,6 @@
 				<configuration>
 					<downloadSources>true</downloadSources>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>appassembler-maven-plugin</artifactId>
-				<version>1.1.1</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>assemble</goal>
-						</goals>
-						<configuration>
-							<assembleDirectory>target</assembleDirectory>
-							<generateRepository>true</generateRepository>
-							<extraJvmArguments>-Xmx512m</extraJvmArguments>
-							<programs>
-								<program>
-									<mainClass>Start</mainClass>
-									<name>webapp</name>
-								</program>
-							</programs>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
           </plugins>
 	</build>
