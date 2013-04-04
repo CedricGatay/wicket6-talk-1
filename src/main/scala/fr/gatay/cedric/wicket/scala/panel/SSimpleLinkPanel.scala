@@ -19,6 +19,5 @@ class SSimpleLinkPanel[T](id:String, model: IModel[T]) extends GenericPanel[T](i
     LOGGER.info("Click from Scala")
     setResponsePage(classOf[SScalaPage])
   }
-  add(new SLink[String]("link", Model.of("Link from Scala"),
-                          unit))
+  add(new SLink[String]("link", unit))
 }

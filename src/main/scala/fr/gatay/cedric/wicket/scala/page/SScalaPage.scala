@@ -15,6 +15,6 @@ import org.wicketstuff.annotation.mount.MountPath
 @MountPath("/fullscala")
 class SScalaPage(params : PageParameters) extends HomePage(params){
   protected override def createLink(wicketId: String) {
-     add(new SLink(wicketId, Model.of("Created from Scala"), { (_) => setResponsePage(classOf[ScalaPage[Nothing]])}))
+     add(new SLink(wicketId, { (_) => setResponsePage(classOf[ScalaPage[Nothing]])}))
   }
 }
